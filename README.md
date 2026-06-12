@@ -30,5 +30,6 @@ A robust, full-stack e-commerce web application built using the Django framework
      python manage.py migrate
 
 6. Start the development server:
+   ```bash
      python manage.py runserver
    
