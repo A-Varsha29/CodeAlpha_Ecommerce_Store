@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - AV STORE</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9;}
+        /* Style standard Django form input elements to look modern */
+        input {
+            background-color: #0d1117 !important;
+            border: 1px solid #30363d !important;
+            color: white !important;
+            padding: 10px 14px;
+            border-radius: 8px;
+            width: 100%;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            outline: none;
+        }
+        input:focus { border-color: #3b82f6 !important; }  
+        label { color: #8b949e; font-size: 14px; font-weight: 600; display: block; margin-top: 8px; }
+        .helptext { display: block; font-size: 12px; color: #484f58; margin-bottom: 12px; line-height: 1.4; }
+        ul { list-style-type: disc; margin-left: 20px; color: #484f58; font-size: 12px; margin-bottom: 12px; }
+    </style>
+</head>
+<body class="font-sans antialiased flex flex-col min-h-screen justify-center items-center px-4">
+
+    <div class="w-full max-w-md bg-[3161b22] border border-[#30363d] rounded-2xl p-8 shadow-2xl">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold text-white tracking-wide">Join AV STORE</h1>
+            <p class="text-[#8b949e] text-sm mt-1">Create an account to track your orders and inventory.</p>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 px-4 rounded-xl mt-4 transition-colors shadow-lg shadow-blue-600/20 cursor-pointer">
+                Create Account
+            </button>
+        </form>
+
+        <p class="text-center text-sm text-[#8b949e] mt-6">
+            Already have an administrative account? <a href="/admin/" class="text-blue-400 hover:underline">Log in here</a>
+        </p>
+    </div>
+
+</body>
+</html>

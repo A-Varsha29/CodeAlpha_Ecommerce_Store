@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - AV STORE</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>body { background-color: #0d1117; color: #c9d1d9; }</style>
+</head>
+<body class="font-sans antialiased">
+
+    <nav class="bg-[#161b22] border-b border-[#30363d] px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="/" class="text-xl font-bold tracking-wider text-white hover:text-blue-400 transition-colors">← CONTINUE SHOPPING</a>
+            <span class="text-white font-semibold">Shopping Bag Summary</span>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <h1 class="text-3xl font-extrabold text-white mb-8">Review Your Selected Items</h1>
+
+        {% if cart_items %}
+            <div class="bg-[#161b22] border border-[#30363d] rounded-2xl overflow-hidden shadow-2xl mb-6">
+                <div class="divide-y divide-[#30363d]">
+                    {% for item in cart_items %}
+                        <div class="p-6 flex items-center justify-between flex-wrap gap-4">
+                            <div>
+                                <h3 class="text-lg font-bold text-white">{{ item.product.title }}</h3>
+                                <p class="text-sm text-[#8b949e]">Base Price: ${{ item.product.price }}</p>
+                            </div>
+                            <div class="flex items-center space-x-12">
+                                <span class="text-sm text-[#8b949e]">Qty: <strong class="text-white text-base">{{ item.quantity }}</strong></span>
+                                <span class="text-xl font-bold text-blue-400">${{ item.subtotal }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}        
+                </div>
+
+                <div class="bg-[#0d1117] p-6 border-t border-[#30363d] flex justify-between items-center">
+                    <span class="text-lg font-medium text-[#8b949e]">Estimated Balance:</span>
+                    <span class="text-3xl font-black text-green-400">${{ total_price }}</span>
+                </div>                
+            </div>
+            <button onclick="alert('Order Processed Successfully! Thank you for your purchase.')" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-4 rounded-xl transition-colors shadow-lg shadow-green-600/20 cursor-pointer text-center block">
+                Proceed to  Secure Checkout (Order Processing)
+            </button>
+        {% else %}
+            <div class="bg-[#161b22] border border-[#30363d] rounded-2xl p-12 text-center shadow-xl">
+                <p class="text-[#8b949e] text-lg mb-6">Your shopping cart session is completely empty.</p>
+                <a href="/" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 px-6 rounded-lg transition-colors">Explore Innovations</a>
+            </div>
+        {% endif %}    
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ product.title }} - AV STORE</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <style>body { background-color: #0d1117; color: #c9d1d9; }</style>
+    </head>
+    <body class="font-sans antialiased">
+
+        <nav class="bg-[#161b22] border-b border-[#30363d] px-6 py-4">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <a href="/" class="text-xl font-bold tracking-wider text-white hover:text-blue-400 transition-colors">← BACK TO STORE</a>
+                <span class="text-[#8b949e] text-sm">Product ID: #{{ product.id }}</span>        
+            </div>
+        </nav>
+
+        <main class="max-w-5xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-[#161b22] border border-[#30363d] rounded-2xl p-8 shadow-2xl">
+
+                <div class="bg-[#0d1117] border border-[#30363d] rounded-xl overflow-hidden h-96 flex items-center justify-center">
+                    {% if product.image_url %}
+                        <img src="{{ product.image_url }}" alt="{{ product.title }}" class="object-cover h-full w-full">
+                    {% else %} 
+                        <span class="text-[#484f58]">No Image Available</span>
+                    {% endif %}      
+                </div>
+
+                <div class="border-t border-[#30363d] pt-6 mt-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-[#8b949e] text-sm">Authorized Price</span>
+                        <span class="text-4xl font-black text-blue-400">${{ product.price }}</span>
+                    </div>
+                    <button class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 px-6 rounded-xl transition-colors shadow-lg shadow-blue-600/20 cursor-pointer">
+                        Add Item to Cart
+                    </button>
+                </div>
+            </div>
+        </div> 
+        </main>
+    </body>
+</html>
